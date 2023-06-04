@@ -73,7 +73,7 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-  const res = startDate.getTime() - endDate.getTime();
+  const res = endDate.getTime() - startDate.getTime();
   const hours = Math.floor(res / (1000 * 60 * 60))
     .toString()
     .padStart(2, '0');
@@ -85,9 +85,16 @@ function timeSpanToString(startDate, endDate) {
     .padStart(2, '0');
   const milliseconds = (res % 1000).toString().padStart(3, '0');
   return `${hours}:${minutes}:${seconds}.${milliseconds}`;
-  /* Метод padStart() заполняет текущую строку другой строкой (несколько раз, если нужно) так, что итоговая строка достигает заданной длины. Заполнение осуществляется в начале (слева) текущей строки. */
+  /* Метод padStart() заполняет текущую строку другой строкой (несколько раз, если нужно) так,
+  что итоговая строка достигает заданной длины. Заполнение осуществляется в начале (слева)
+  текущей строки. */
 }
-
+// console.log(
+//   timeSpanToString(
+//     new Date(2000, 1, 1, 10, 0, 0),
+//     new Date(2000, 1, 1, 11, 0, 0)
+//   )
+// );
 /**
  * Returns the angle (in radians) between the hands of an analog clock
  * for the specified Greenwich time.
